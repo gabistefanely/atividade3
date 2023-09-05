@@ -1,0 +1,76 @@
+ATIVIDADE 2 (TERCEIRO BIMESTRE)
+
+1- Faça um JSP que recebe uma temperatura em °C e a converte para °F
+
+<%@ page language=”java” contentType=”text/html; charset=UTF-8” pageEncoding=”UTF8”%>
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset=”UTF-8”>
+ <title>Converter temperatura</title>
+</head>
+<body>
+ <h1>Converter temperatura</h1>
+
+ <%
+ If(request.getMethod().equals(“POST”)) {
+ Double celsius = Double.parseDouble(request.getParameter(“celsius”));
+ Double fahrenheit = (celsius * 9 / 5) + 32;
+ %>
+ <p><b>Celsius:</b> <%= celsius %> °C</p>
+ <p><b>Fahrenheit:</b> <%= fahrenheit %> °F</p>
+ <% } %>
+
+ <form method=”POST”>
+ <p>Digite a temperatura em Celsius: <input type=”number” name=”celsius” step=”any”
+required/></p>
+ <input type=”submit” value=”Converter”/>
+ </form>
+</body>
+</html>
+
+
+
+
+2- Faça um JSP que monte uma tabela de conversão de temperaturas entre °C e °F (de – X °C a Y °C com
+passos de 0,5°C) sendo X e Y valores recebidos como parâmetro (A fórmula é F = 9/5 C + 32)
+
+
+
+
+
+
+
+
+3- Faça uma página que recebe um número e mostra a tabuada dele
+
+<%
+If(request.getMethod().equals(“POST”)) {
+ Int numero = Integer.parseInt(request.getParameter(“numero”));
+%>
+<h2>Tabuada do <%= numero %>:</h2>
+<table>
+ <thead>
+ <tr>
+ <th>Valor</th>
+ <th>Resultado</th>
+ </tr>
+ </thead>
+ <tbody>
+ <%
+ For(int i = 1; i <= 10; i++) {
+ Int resultado = numero * i;
+ %>
+ <tr>
+ <td><%= i %></td>
+ <td><%= resultado %></td>
+ </tr>
+ <%
+ }
+ %>
+ </tbody>
+</table>
+<%
+}
+%>
+
